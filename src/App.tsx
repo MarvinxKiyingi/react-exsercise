@@ -9,11 +9,16 @@ export type INputProps = {
 };
 
 function App() {
-  const [inputValue, setInputValue] = useState('');
+  const sessionStorageKey = 'inputValue';
+  const getSessionStorage = sessionStorage.getItem(sessionStorageKey);
+  const [inputValue, setInputValue] = useState(getSessionStorage || '');
+
+  const setSessionStorage = sessionStorage.setItem(sessionStorageKey, inputValue);
 
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputEventvalue = e.target.value;
     setInputValue(inputEventvalue);
+    return setSessionStorage;
   };
 
   return (
