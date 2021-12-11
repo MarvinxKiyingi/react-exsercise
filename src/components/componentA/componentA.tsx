@@ -16,12 +16,11 @@ export const ComponentA = (props: INputProps) => {
     if (!pinkBg) {
       setPinkBg(true);
       setBgClassName('component pink');
-      return setSessionStorage;
     } else {
       setPinkBg(false);
       setBgClassName('component');
-      return setSessionStorage;
     }
+    return setSessionStorage;
   };
 
   return (
