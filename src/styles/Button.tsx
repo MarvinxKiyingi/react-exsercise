@@ -20,7 +20,7 @@ export const StyledButton = styled.button`
     background-color: #2ee59d;
     box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
     color: #fff;
-    transform: translateY(-7px);
+    transform: translateY(-3px);
   }
   &:active {
     box-shadow: #422800 2px 2px 0 0;
