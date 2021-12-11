@@ -1,7 +1,8 @@
 import { useState } from 'react';
+import { INputProps } from '../../App';
 import { StyledButton } from '../../styles/Button';
 
-export const ComponentB = () => {
+export const ComponentB = (props: INputProps) => {
   const sessionStorageKey = 'componentB_className';
   const getSessionStorage = sessionStorage.getItem(sessionStorageKey);
 
@@ -22,8 +23,9 @@ export const ComponentB = () => {
   };
   return (
     <div className={bgClassName}>
-      <span className={'component_title'}> Component B </span>
+      <p>{props.inputValue}</p>
       <StyledButton onClick={onClick}>Click me</StyledButton>
+      <span className={'component_title'}> Component B </span>
     </div>
   );
 };

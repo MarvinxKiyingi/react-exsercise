@@ -1,7 +1,9 @@
-import { useState } from 'react';
+import { TextField } from '@mui/material';
+import React, { useState } from 'react';
+import { INputProps } from '../../App';
 import { StyledButton } from '../../styles/Button';
 
-export const ComponentA = () => {
+export const ComponentA = (props: INputProps) => {
   const sessionStorageKey = 'componentA_className';
   const getSessionStorage = sessionStorage.getItem(sessionStorageKey);
 
@@ -18,12 +20,15 @@ export const ComponentA = () => {
     } else {
       setPinkBg(false);
       setBgClassName('component');
+      return setSessionStorage;
     }
   };
+
   return (
     <div className={bgClassName}>
-      <span className={'component_title'}> Component A </span>
+      <TextField id='outlined-basic' label='Type something' variant='outlined' onChange={props.handleChange} />
       <StyledButton onClick={onClick}>Click me</StyledButton>
+      <span className={'component_title'}> Component A </span>
     </div>
   );
 };
