@@ -26,11 +26,4 @@ export const StyledButton = styled.button`
     box-shadow: #422800 2px 2px 0 0;
     transform: translate(2px, 2px);
   }
-
-  @media (min-width: 768px) {
-     {
-      min-width: 120px;
-      padding: 0 25px;
-    }
-  }
 `;
