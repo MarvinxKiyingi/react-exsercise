@@ -1,4 +1,4 @@
-import './App.css';
+import './App.scss';
 import { ComponentA } from './components/componentA/componentA';
 import { ComponentB } from './components/componentB/componentB';
 
