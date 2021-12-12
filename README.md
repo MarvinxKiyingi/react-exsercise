@@ -2,6 +2,7 @@
 
 This is an react exsercise fockusing on props and components.
 
+Live page:https://react-exercise-co.netlify.app/
 ## Available Scripts
 
 In the project directory, you can run:
