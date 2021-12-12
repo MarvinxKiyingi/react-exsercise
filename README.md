@@ -2,6 +2,7 @@
 
 This is an react exsercise fockusing on props and components.
 
+Live link
 ## Available Scripts
 
 In the project directory, you can run:
