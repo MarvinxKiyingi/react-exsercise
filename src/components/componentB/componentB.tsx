@@ -1,28 +1,31 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { INputProps } from '../../App';
 import { StyledButton } from '../../styles/Button';
 
 export const ComponentB = (props: INputProps) => {
-  const sessionStorageKey = 'componentB_className';
-  const getSessionStorage = sessionStorage.getItem(sessionStorageKey);
+  const sessionStorageKey = 'isBgPink_componentB';
+  const getSessionStorage: boolean = JSON.parse(sessionStorage.getItem(sessionStorageKey)!);
 
-  const [pinkBg, setPinkBg] = useState(false);
-  const [bgClassName, setBgClassName] = useState(getSessionStorage || 'component');
+  const [pinkBg, setPinkBg] = useState(getSessionStorage);
 
-  const setSessionStorage = sessionStorage.setItem(sessionStorageKey, bgClassName);
+  const setSessionStorage = sessionStorage.setItem(sessionStorageKey, JSON.stringify(pinkBg));
 
   const onClick = () => {
     if (!pinkBg) {
       setPinkBg(true);
-      setBgClassName('component pink');
+      return setSessionStorage;
     } else {
       setPinkBg(false);
-      setBgClassName('component');
+      return setSessionStorage;
     }
-    return setSessionStorage;
   };
+  useEffect(() => {
+    if (!getSessionStorage) {
+      setPinkBg(false);
+    }
+  }, [getSessionStorage]);
   return (
-    <div className={bgClassName}>
+    <div className={pinkBg ? 'component pink' : 'component'}>
       <p>{props.inputValue}</p>
       <StyledButton onClick={onClick}>Click me</StyledButton>
       <span className={'component_title'}> Component B </span>
