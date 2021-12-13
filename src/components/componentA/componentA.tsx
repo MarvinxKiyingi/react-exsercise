@@ -1,30 +1,34 @@
 import { TextField } from '@mui/material';
-import React, { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { INputProps } from '../../App';
 import { StyledButton } from '../../styles/Button';
 
 export const ComponentA = (props: INputProps) => {
-  const sessionStorageKey = 'componentA_className';
-  const getSessionStorage = sessionStorage.getItem(sessionStorageKey);
+  const sessionStorageKey = 'isBgPink_componentA';
+  const getSessionStorage: boolean = JSON.parse(sessionStorage.getItem(sessionStorageKey)!);
 
-  const [pinkBg, setPinkBg] = useState(false);
-  const [bgClassName, setBgClassName] = useState(getSessionStorage || 'component');
+  const [pinkBg, setPinkBg] = useState(getSessionStorage);
 
-  const setSessionStorage = sessionStorage.setItem(sessionStorageKey, bgClassName);
+  const setSessionStorage = sessionStorage.setItem(sessionStorageKey, JSON.stringify(pinkBg));
 
   const onClick = () => {
     if (!pinkBg) {
       setPinkBg(true);
-      setBgClassName('component pink');
+      return setSessionStorage;
     } else {
       setPinkBg(false);
-      setBgClassName('component');
+      return setSessionStorage;
     }
-    return setSessionStorage;
   };
 
+  useEffect(() => {
+    if (!getSessionStorage) {
+      setPinkBg(false);
+    }
+  }, [getSessionStorage]);
+
   return (
-    <div className={bgClassName}>
+    <div className={pinkBg ? 'component pink' : 'component'}>
       <TextField id='outlined-basic' label='Type something' variant='outlined' onChange={props.handleChange} />
       <StyledButton onClick={onClick}>Click me</StyledButton>
       <span className={'component_title'}> Component A </span>
